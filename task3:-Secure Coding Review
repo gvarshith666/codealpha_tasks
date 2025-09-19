@@ -1,0 +1,49 @@
+CodeAlpha 1month cyber-security internship
+✅️task 3:-Secure Coding Review
+● Select a programming language and application to audit.
+● Perform a code review to identify security vulnerabilities.
+● Use tools like static analyzers or manual inspection methods.
+● Provide recommendations and best practices for secure coding.
+● Document findings and suggest remediation steps for safer code
+
+
+Secure Coding Review Example:-
+Application Overview:-
+-Application Name: Online Banking System
+- Programming Language: Java
+- Framework: Spring Boot
+
+Code Review Findings:-
+🔹️SQL Injection Vulnerability: The application uses a SQL query with user-input data without proper sanitization.
+🔹️Cross-Site Scripting (XSS) Vulnerability: The application reflects user-input data in an HTML response without proper encoding.
+🔹️Insecure Password Storage: The application stores passwords in plaintext.
+
+tools used:-
+🔹️static analysis tool:-SonarQube
+🔹️Manual inspection:-review code for potential security vulnerabilities 
+
+
+Recommendations and Best Practices for secure coding:-
+
+-use prepared statements: use prepared statements to prevent SQL injection attacks.
+-use Input validation and sanitization: Validate and sanitize user input to prevent XSS attacks.
+-use secure password hashing: Use a secure password hashing algorithm like bcrypt.
+
+remediation steps for safer code:-
+
+.update code to use prepared statements:-
+
+String query = "SELECT * FROM users WHERE username = ?";
+PreparedStatement pstmt = conn.prepareStatement(query);
+pstmt.setString(1, username);
+ResultSet results = pstmt.executeQuery();
+
+.update code to use input validation and sanitization:-
+
+String userInput = request.getParameter("userInput");
+String sanitizedInput = HtmlUtils.htmlEscape(userInput);
+
+.update code to use secure password hashing:-
+
+String password = request.getParameter("password");
+String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
